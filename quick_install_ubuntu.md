@@ -188,10 +188,14 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 10
 ##### 查看opencv版本
 pkg-config --modversion opencv
 
-
 ##### 配置虚拟环境python
+
+```
 sudo apt install virtualenvwrapper
 mkdir $HOME/.virtualenvs
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/share/virtualenvwrapper.sh
+```
+
+
