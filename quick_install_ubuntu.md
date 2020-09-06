@@ -193,9 +193,15 @@ pkg-config --modversion opencv
 ```
 sudo apt install virtualenvwrapper
 mkdir $HOME/.virtualenvs
+
+# gedit your bashrc or zshrc, the example followed is for zsh
+vim .zshrc
+# add the things
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/share/virtualenvwrapper.sh
+# refresh
+source .zshrc
 ```
 
 
