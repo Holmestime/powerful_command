@@ -34,6 +34,12 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 # or 通过wget安装
 sudo apt install wget git make
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# if you can't connect with the website below
+sudo vim /etc/hosts
+# add the things to the end of the file
+199.232.68.133  raw.githubusercontent.com
+
 ```
 
 ###### 使用源安装nvidia驱动
