@@ -1,5 +1,5 @@
 # powerful_command
-some demands for linux
+some demands for linux and windows
 
 ## quick_install_ubuntu
 1. remove the useless software
