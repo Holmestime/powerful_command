@@ -5,6 +5,8 @@
 
 `sudo apt remove -y libreoffice-common unity-webapps-common thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku  landscape-client-ui-install onboard deja-dup`
 
+> 新版本的ubuntu可以使用minimal install，这样可以避免安装一些自己不需要的包。
+
 ##### 安装常用软件和包
 ###### 安装wps
 `sudo apt -y install wps-office`
