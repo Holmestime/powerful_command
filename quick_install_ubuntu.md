@@ -1,21 +1,131 @@
 [TOC]
 
-#### Ubuntu指南
-##### 删除一些乱七八糟的
+# Ubuntu tutorial
 
-`sudo apt remove -y libreoffice-common unity-webapps-common thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku  landscape-client-ui-install onboard deja-dup`
+## Change sources
 
-> 新版本的ubuntu可以使用minimal install，这样可以避免安装一些自己不需要的包。
+- Ubuntu apt sources
 
-##### 安装常用软件和包
-###### 安装wps
-`sudo apt -y install wps-office`
-###### 安装Vim
-`sudo apt install -y vim`
-###### 安装CMake
-`sudo apt install -y cmake`
-###### 安装unrar
-`sudo apt install -y unrar`
+```
+cd update_source
+chmod +x update_source.sh
+sudo ./update_source.sh
+```
+
+- Pip Source
+
+```bash
+mkdir ~/.pip
+echo "[global]
+index-url = http://mirrors.aliyun.com/pypi/simple/
+
+[install]
+trusted-host=mirrors.aliyun.com" >> test.txt
+```
+
+- Conda source
+
+```bash
+echo "channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+  - defaults
+show_channel_urls: true" >> ~/.condarc
+```
+
+## Useful tool
+
+- Fundamental
+```bash
+sudo apt install -y vim cmake unrar viewnior git curl zsh 
+
+```
+
+- Optional
+
+```bash
+# ZSH
+sudo apt install wget git make curl
+# via curl
+sh -c "$(curl -fsSL https://gitee.com/holmestime/oh-my-zsh-install.sh/raw/master/install.sh)"
+
+# via wget
+sh -c "$(wget -O- https://gitee.com/holmestime/oh-my-zsh-install.sh/raw/master/install.sh)"
+
+```
+
+## Driver and Cuda
+
+### Driver
+
+```bash
+# add ppa
+sudo add-apt-repository ppa:graphics-drivers/ppa
+
+# get the available ubuntu drivers
+ubuntu-drivers devices
+
+# autoinstall
+sudo ubuntu-drivers autoinstall
+
+# manual install
+sudo apt install nvidia-driver-xxx
+
+# Restart
+reboot
+
+# check
+nvidia-smi
+
+
+# Change the max brightness
+xrandr --output eDP-1-1 --brightness 1
+```
+
+### Cuda and Cudnn
+
+- Cuda
+
+```
+# Download the xxx.run of cuda
+sudo sh xxxxx.run
+
+# set the path
+sudo echo "export CUDA_HOME=/usr/local/cuda-10.0
+export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}" >> /etc/profile
+
+# update
+source /etc/profile
+
+# check
+nvcc -V
+
+# test
+cd /usr/local/cuda/samples
+sudo make -j8
+```
+
+- Cudnn
+
+```
+# Download cudnn-xxx
+tar zxvf cudnn-xxx
+sudo cp include/cudnn.h /usr/local/cuda/include/
+sudo cp lib64/* /usr/local/cuda/lib64/
+cd /usr/local/cuda/lib64
+sudo ln -sf libcudnn.so.7.6.0 libcudnn.so.7
+sudo ln -sf libcudnn.so.7 libcudnn.so
+sudo ldconfig -v
+```
+
+
+
+
+
+
+
 ###### 安装chrome
 
 ```
@@ -24,72 +134,13 @@ sudo apt-get install libappindicator1 libindicator7
 sudo apt-get -f install
 ```
 
-###### 安装pip3和pip
-`sudo  apt install python3-pip python-pip`
 
-###### 安装zsh
-```
-# 通过curl安装
-sudo apt install curl,git,make
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# or 通过wget安装
-sudo apt install wget git make
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# if you can't connect with the website below
-sudo vim /etc/hosts
-# add the things to the end of the file
-199.232.68.133  raw.githubusercontent.com
-
-```
-
-###### 使用源安装nvidia驱动
-```
-# 添加源
-sudo add-apt-repository ppa:graphics-drivers/ppa
-# 安装依赖
-sudo apt install dkms lib32gcc1 libc6-i386  -y
-# 安装驱动
-sudo apt-get update && sudo apt-get install nvidia-396
-# 此后最好重启
-
-# 调节系统最大亮度
-xrandr --output eDP-1-1 --brightness 1
-```
-
-##### 安装cuda
-`sudo sh xxxxx.run`
-设置环境变量
-`sudo gedit /etc/profile`
-在打开的文件末尾加入
-```
-export CUDA_HOME=/usr/local/cuda-10.0
-export PATH=/usr/local/cuda-10.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-```
-更新配置
-`source /etc/profile`
-
-测试是否安装成功
-`nvcc -V`
-
-测试性能
-```
-cd /usr/local/cuda/samples
-sudo make -j8
-```
 
 ##### 安装cudnn
 去 https://developer.nvidia.com/rdp/cudnn-download   ,移到解压后的文件夹里
 ```
-tar zxvf
-sudo cp include/cudnn.h /usr/local/cuda/include/
-sudo cp lib64/* /usr/local/cuda/lib64/
-cd /usr/local/cuda/lib64
-sudo ln -sf libcudnn.so.7.6.0 libcudnn.so.7
-sudo ln -sf libcudnn.so.7 libcudnn.so
-sudo ldconfig -v
+
 ```
 
 
