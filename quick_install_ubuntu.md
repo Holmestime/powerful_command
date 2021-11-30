@@ -88,6 +88,13 @@ xrandr --output eDP-1-1 --brightness 1
 - Cuda
 
 ```
+# 更换gcc版本
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 10
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 10
+```
+
+
+```
 # Download the xxx.run of cuda
 sudo sh xxxxx.run
 
@@ -134,14 +141,6 @@ sudo apt-get install libappindicator1 libindicator7
 sudo apt-get -f install
 ```
 
-
-
-
-##### 安装cudnn
-去 https://developer.nvidia.com/rdp/cudnn-download   ,移到解压后的文件夹里
-```
-
-```
 
 
 ##### 安装tensorflow
@@ -238,11 +237,6 @@ sudo make runtest -j8
 `sudo pip3 install dlib`
 
 #### 实用脚本
-##### 更换gcc版本
-```
-sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 10
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-6 10
-```
 
 ##### 查看opencv版本
 pkg-config --modversion opencv
