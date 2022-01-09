@@ -130,7 +130,7 @@ sudo ldconfig -v
 ### virtualenvwrapper
 
 ```
-sudo apt install virtualenvwrapper
+sudo pip3 install virtualenvwrapper
 mkdir $HOME/.virtualenvs
 
 # gedit your bashrc or zshrc, the example followed is for zsh
